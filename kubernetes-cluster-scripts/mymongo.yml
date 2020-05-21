@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mymongo
+spec:
+  selector:
+    matchLabels:
+      app: mymongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mymongo
+    spec:
+      containers:
+      - name: mymongo
+        image: kennethfaria/mymongo
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 27017
